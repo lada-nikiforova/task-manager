@@ -19,7 +19,7 @@ export const TaskList = () => {
             <SortIcon/>
           </button>
         </div>
-        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 justify-center items-start ">
+        <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 justify-center items-start ">
           <button className="border-3 border-dashed cursor-pointer border-indigo-300 shadow-xl hover:shadow-indigo-300 text-6xl h-40 rounded-2xl flex justify-center items-center">
             <AddIcon className='text-indigo-500' sx={{fontSize:52}}/>
           </button>

@@ -7,13 +7,13 @@ interface Props {
 const SelectForm: React.FC<Props> = ({ value, onChange }) => {
   return (
     <div className="flex flex-col mb-4">
-        <label className="text-xl font-bold mb-1">Category</label>
+        <label className=" font-bold mb-1">Category</label>
         <select
             id="contactMethod"
             name="contactMethod"
             value={value}
             onChange={(e) => onChange?.(e.target.value as TaskCategory)}
-            className=" px-4 py-2 cursor-pointer bg-white text-2xl border-2 border-gray-300 focus:outline-none focus:border-indigo-400 rounded-2xl shadow-xl">
+            className=" px-4 py-2 cursor-pointer bg-white border-2 border-gray-300 focus:outline-none focus:border-indigo-400 rounded-2xl shadow-xl">
                 {taskCategories.map(cat =>(
                     <option key={cat} value={cat}>{cat}</option>
                 ))}
