@@ -1,6 +1,5 @@
 import { categoryColors, priorityColors, statusColors } from "../types/color";
 import type { Task } from "../types/task";
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from "react-router";
 
