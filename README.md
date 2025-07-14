@@ -2,6 +2,12 @@
 
 Веб-приложение для управления задачами, разработанное с использованием **React**, **TypeScript**, **Tailwind CSS** и **Vite**. Позволяет просматривать список задач и редактировать их в удобном и адаптивном интерфейсе.
 
+## Демо
+
+Проект доступен по ссылке: [https://lada-nikiforova.github.io/task-manager/](https://lada-nikiforova.github.io/task-manager/)
+
+Сайт размещён с помощью GitHub Pages.
+
 ---
 
 ## Технологии

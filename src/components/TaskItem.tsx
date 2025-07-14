@@ -25,9 +25,9 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
       </div>
       
         <div className="mb-2">
-            <h3 className="font-bold text-lg lg:text-xl">{task.title}</h3>
+            <h3 className="font-bold break-all text-lg lg:text-xl">{task.title}</h3>
             {task.description && (
-                <p className="text-md lg:text-lg">{task.description}</p>
+                <p className="text-md break-all lg:text-lg">{task.description}</p>
             )}
         </div>
         <div className="flex flex-nowrap gap-2 mb-2">
