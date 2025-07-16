@@ -32,7 +32,7 @@ export const TaskList = () => {
           </button>
         </div>
         <div className="grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 justify-center items-start ">
-          <Link to={'/task/new'} className="border-3 min-w-50 border-dashed cursor-pointer border-indigo-300 shadow-xl hover:shadow-indigo-300 text-6xl h-40 rounded-2xl flex justify-center items-center">
+          <Link to={'/task/new'} className="border-3 min-w-50 border-dashed cursor-pointer border-indigo-300 shadow-xl hover:shadow-indigo-300 text-6xl h-40 rounded-2xl flex justify-center items-center transition-all duration-300">
             <AddIcon className='text-indigo-500' sx={{fontSize:52}}/>
           </Link>
             {task.map(task => (

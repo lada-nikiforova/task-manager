@@ -38,8 +38,8 @@ export const NewTaskForm = () => {
         <ChipSelector<TaskStatus> label="Status" options={taskStat} value={newTask?.status} onChange={val => (setNewTask((prev) => prev ? { ...prev, status: val } : prev))}/>
         <ChipSelector<TaskPriority> label="Priority" options={TaskPrior} value={newTask?.priority} onChange={val => (setNewTask((prev) => prev ? { ...prev, priority: val } : prev))}/>
         <div className="flex flex-wrap gap-3 mt-3 justify-between font-bold">
-            <button type="submit" className=" bg-indigo-500 text-light hover:bg-indigo-700 active:bg-indigo-800 rounded-3xl px-4 py-2 md:px-10 shadow-xl">Сохранить</button>
-            <Link className="bg-indigo-200 hover:bg-indigo-500 active:bg-indigo-600 rounded-3xl px-4 py-2 md:px-10 shadow-xl" to={'/'}>Отменить</Link>
+            <button type="submit" className="cursor-pointer bg-indigo-500 text-light hover:bg-indigo-700 active:bg-indigo-800 rounded-3xl px-4 py-2 md:px-10 shadow-xl  transition-all duration-300">Сохранить</button>
+            <Link className="cursor-pointer bg-indigo-200 hover:bg-indigo-500 active:bg-indigo-600 rounded-3xl px-4 py-2 md:px-10 shadow-xl  transition-all duration-300" to={'/'}>Отменить</Link>
         </div>
         
     </form>
