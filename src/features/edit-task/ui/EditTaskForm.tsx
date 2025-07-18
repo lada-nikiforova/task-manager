@@ -19,7 +19,7 @@ export const EditTaskForm = () => {
     }, [task]);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-    const handleSubmit=(e: React.FormEvent)=>{
+    const handleSubmit = async (e: React.FormEvent)=>{
         e.preventDefault();
         if(!editedTask?.title.trim()){
           setError('Title is required');
@@ -29,6 +29,7 @@ export const EditTaskForm = () => {
         if (editedTask) 
         {
           dispatch(editTask(editedTask))
+          await new Promise(resolve => setTimeout(resolve, 0));
           navigate('/')
         }
     }

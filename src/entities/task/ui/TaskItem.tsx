@@ -19,7 +19,7 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
   };
   const navigate = useNavigate();
   return (
-    <div onClick={() => navigate(`task/${task.id}`)} className={`cursor-pointer text-black shadow-xl rounded-2xl p-3 border-3 border-indigo-300  hover:shadow-indigo-300 transition-all duration-300`}>
+    <div onClick={() => navigate(`task/${task.id}`)} className={`cursor-pointer text-black shadow-xl rounded-2xl p-3 border-1 border-indigo-300  hover:shadow-indigo-300 active:shadow-indigo-500 transition-all duration-300`}>
       <div className={`${bgCategory} inline-flex items-center rounded-full mb-2`}>
         <p className="text-md lg:text-xl px-3 py-1 font-medium">&bull; {task.category}</p>
       </div>
