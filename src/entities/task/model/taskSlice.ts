@@ -1,38 +1,66 @@
-import { taskMock } from "@/shared";
-import type { Task } from "./task";
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import * as api from '@/app/api/api';
+import type { Task } from './task';
 
 interface TaskState {
-    tasks: Task[];
+    tasks: Task[],
+    isLoading: boolean,
 }
-
-const savedTasks = localStorage.getItem('tasks');
+  
 const initialState: TaskState = {
-    tasks: savedTasks ? JSON.parse(savedTasks) : taskMock,
-}
-
+    tasks: [],
+    isLoading: false,
+};
 export const TaskSlice = createSlice({
     name: 'task',
     initialState,
-    reducers:{
-        addTask:(state, action: PayloadAction<Task>) =>{
-            state.tasks.push(action.payload);
-        },
-        loadTasksFromStorage: (state, action: PayloadAction<Task[]>)=>{
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(fetchTasks.fulfilled, (state, action) => {
             state.tasks = action.payload;
-        },
-        editTask:(state, action: PayloadAction<Task>)=>{
-            const index = state.tasks.findIndex(t => t.id === action.payload.id);
-            if (index !== -1){
-                state.tasks[index] = action.payload
+            state.isLoading = false;
+        });
+        builder.addCase(getTaskAsync.fulfilled, (state, action) => {
+            const found = state.tasks.find(t => t.id === action.payload.id);
+            if (!found) {
+              state.tasks.push(action.payload);
+              state.isLoading = false;
             }
-        },
-        deleteTask:(state, action: PayloadAction<Task>)=>{
-            state.tasks = state.tasks.filter((t) => t.id !== action.payload.id)
-        }
+        });
+        builder.addCase(fetchTasks.pending, (state) => {
+            state.isLoading = true;
+        })
+        builder.addCase(fetchTasks.rejected, (state) => {
+            state.isLoading = false;
+        });
 
-    }
-})
+    },
+
+});
+
+export const fetchTasks = createAsyncThunk(
+    'task/fetchTasks',
+    api.getAllTasks
+);
+
+export const addTaskAsync = createAsyncThunk(
+    'task/addTask',
+    api.addTask
+);
+
+export const deleteTaskAsync = createAsyncThunk(
+    'task/deleteTask',
+    api.deleteTask
+);
+
+export const editTaskAsync = createAsyncThunk(
+    'task/editTask',
+    api.editTask
+);
+
+export const getTaskAsync = createAsyncThunk(
+    'task/editTask',
+    api.editTask
+);
 
 export default TaskSlice.reducer;
-export const { addTask, loadTasksFromStorage, editTask, deleteTask } = TaskSlice.actions;

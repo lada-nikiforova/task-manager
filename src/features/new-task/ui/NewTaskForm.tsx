@@ -1,8 +1,9 @@
 import { ChipSelector, InputForm, SelectForm } from "@/shared";
-import { addTask, TaskPrior, taskStat, type Task, type TaskPriority, type TaskStatus } from "@/entities/task";
+import { addTaskAsync, TaskPrior, taskStat, type Task, type TaskPriority, type TaskStatus } from "@/entities/task";
 import { Link, useNavigate } from "react-router";
 import { useState } from "react";
 import { useAppDispatch } from "@/app/provider/store";
+
 
 export const NewTaskForm = () => {
     const [newTask, setNewTask] = useState<Task>({
@@ -29,8 +30,7 @@ export const NewTaskForm = () => {
             setError('Title is required');
             return
         }
-        dispatch(addTask(newTask));
-        await new Promise(resolve => setTimeout(resolve, 0));
+        await dispatch(addTaskAsync(newTask)).unwrap();
         navigate("/");
 
     }

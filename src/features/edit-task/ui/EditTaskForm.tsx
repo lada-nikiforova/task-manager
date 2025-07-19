@@ -1,5 +1,5 @@
 import { ChipSelector, InputForm, SelectForm } from "@/shared";
-import { editTask, TaskPrior, taskStat, type Task, type TaskPriority, type TaskStatus } from "@/entities/task";
+import { editTaskAsync, TaskPrior, taskStat, type Task, type TaskPriority, type TaskStatus } from "@/entities/task";
 import { Link, useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/app/provider/store";
@@ -28,8 +28,7 @@ export const EditTaskForm = () => {
 
         if (editedTask) 
         {
-          dispatch(editTask(editedTask))
-          await new Promise(resolve => setTimeout(resolve, 0));
+          await dispatch(editTaskAsync(editedTask)).unwrap();
           navigate('/')
         }
     }

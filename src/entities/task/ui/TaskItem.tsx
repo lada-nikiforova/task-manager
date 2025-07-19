@@ -1,6 +1,5 @@
 import { categoryColors, priorityColors, statusColors } from "@/shared/config/color";
 import type { Task } from "../model/task";
-
 import { useNavigate } from "react-router";
 import { DeleteTaskForm } from "@/features/delete-task";
 
@@ -36,7 +35,7 @@ export const TaskItem: React.FC<Props> = ({ task }) => {
       </div>
       <div className="flex justify-between items-center px-2 pt-2 border-t-1 border-indigo-300">
         <p className="text-sm  text-indigo-400">click to edit</p>
-        <DeleteTaskForm value={task}/>
+        <DeleteTaskForm value={task.id}/>
       </div>
       
     </div>

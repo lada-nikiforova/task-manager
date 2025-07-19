@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@/app/provider/store';
-import { loadTasksFromStorage, TaskItem } from '@/entities/task';
-import { SelectSort } from '@/shared';
+import { fetchTasks,  TaskItem } from '@/entities/task';
+import { Loader, SelectSort } from '@/shared';
 import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import SortIcon from '@mui/icons-material/Sort';
@@ -14,7 +14,8 @@ export const TaskList = () => {
     const Category = ['All Category', 'Bug', 'Feature', 'Documentation', 'Refactor', 'Test'];
     const Status = ['All Status', 'To Do', 'In Progress', 'Done'];
     const Priority = ['All Priority', 'Low', 'Medium', 'High'];
-
+    const loading = useAppSelector((state) => state.tasks.isLoading);
+    console.log(loading)
     const [isSortOpen, setIsSortOpen] = useState<boolean>(false);
     const [sortBy, setSortBy] = useState('Date');
     const [categoryFilter, setCategoryFilter] = useState('All Category');
@@ -48,20 +49,22 @@ export const TaskList = () => {
       });
 
 
-    useEffect(() => {
+    useEffect (() => {
         const saved = localStorage.getItem('tasks');
         if (saved) {
           const loadedTasks = JSON.parse(saved);
-          dispatch(loadTasksFromStorage(loadedTasks));
+          dispatch(fetchTasks(loadedTasks));
         }
     }, [dispatch]);  
-     
-    
     
     useEffect(() => {
         console.log('Текущий стейт задач:', task);
         localStorage.setItem('tasks', JSON.stringify(task));
     }, [task]);
+
+    if (loading) {
+      return <Loader/>
+    }
 
 
   return (
