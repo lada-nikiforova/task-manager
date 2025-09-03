@@ -13,8 +13,9 @@ export const addTask = async (task: Task): Promise<Task> => {
   return response.data;
 };
 
-export const deleteTask = async (id: string): Promise<void> => {
+export const deleteTask = async (id: string): Promise<string> => {
   await axios.delete(`${BASE_URL}/task/${id}`);
+  return id;
 };
 
 export const editTask = async (task: Task): Promise<Task> => {

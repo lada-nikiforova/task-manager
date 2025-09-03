@@ -33,6 +33,10 @@ export const TaskSlice = createSlice({
         builder.addCase(fetchTasks.rejected, (state) => {
             state.isLoading = false;
         });
+        builder.addCase(deleteTaskAsync.fulfilled, (state, action) => {
+            state.tasks = state.tasks.filter(task => task.id !== action.payload);
+        });
+          
 
     },
 
